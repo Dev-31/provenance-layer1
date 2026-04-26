@@ -2,6 +2,7 @@ package git
 
 import (
 	"fmt"
+	"os"
 	"os/exec"
 	"strings"
 )
@@ -12,41 +13,35 @@ type GitInfo struct {
 	IsDirty    bool   `json:"is_dirty"`
 }
 
-// GetGitHead returns Git HEAD information
+// GetGitHead returns HEAD commit hash, branch name, and dirty-working-tree flag.
 func GetGitHead() (*GitInfo, error) {
-	// Get commit hash
 	hash, err := exec.Command("git", "rev-parse", "HEAD").Output()
 	if err != nil {
-		return nil, fmt.Errorf("failed to get git HEAD: %w", err)
+		return nil, fmt.Errorf("git rev-parse HEAD: %w", err)
 	}
 
-	// Get branch name
 	branch, err := exec.Command("git", "rev-parse", "--abbrev-ref", "HEAD").Output()
 	if err != nil {
-		return nil, fmt.Errorf("failed to get git branch: %w", err)
+		return nil, fmt.Errorf("git rev-parse branch: %w", err)
 	}
 
-	// Check if working directory is dirty
 	dirty := false
-	output, err := exec.Command("git", "status", "--porcelain").Output()
-	if err == nil && len(output) > 0 {
+	if out, err := exec.Command("git", "status", "--porcelain").Output(); err == nil && len(out) > 0 {
 		dirty = true
 	}
 
-	gitInfo := &GitInfo{
+	return &GitInfo{
 		CommitHash: strings.TrimSpace(string(hash)),
 		Branch:     strings.TrimSpace(string(branch)),
 		IsDirty:    dirty,
-	}
-
-	return gitInfo, nil
+	}, nil
 }
 
-// GetWorkingDirectory returns the current working directory
+// GetWorkingDirectory returns the process working directory.
 func GetWorkingDirectory() (string, error) {
-	output, err := exec.Command("pwd").Output()
+	dir, err := os.Getwd()
 	if err != nil {
-		return "", fmt.Errorf("failed to get working directory: %w", err)
+		return "", fmt.Errorf("getwd: %w", err)
 	}
-	return strings.TrimSpace(string(output)), nil
+	return dir, nil
 }

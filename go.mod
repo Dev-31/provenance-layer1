@@ -2,10 +2,7 @@ module github.com/dev-sopariwala/provenance-layer1
 
 go 1.21
 
-require (
-	github.com/golang-jwt/jwt/v5 v5.2.1
-	github.com/stretchr/testify v1.9.0
-)
+require github.com/stretchr/testify v1.9.0
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
