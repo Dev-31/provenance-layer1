@@ -23,7 +23,7 @@ The signing contract: `Payload()` serialises the manifest with `Signature: null`
 ## Installation
 
 ```bash
-go install github.com/dev-sopariwala/provenance-layer1/cmd/provenance-sign@latest
+go install github.com/Dev-31/provenance-layer1/cmd/provenance-sign@latest
 ```
 
 Requires Go 1.21+.
@@ -167,7 +167,7 @@ jobs:
         with: { go-version: "1.22" }
 
       - name: Install provenance-sign
-        run: go install github.com/dev-sopariwala/provenance-layer1/cmd/provenance-sign@latest
+        run: go install github.com/Dev-31/provenance-layer1/cmd/provenance-sign@latest
 
       - name: Generate ephemeral key
         run: provenance-sign keygen
