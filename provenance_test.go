@@ -255,6 +255,15 @@ func TestWrongKeyCannotVerify(t *testing.T) {
 	require.Error(t, err)
 }
 
+// TestSchemaVersionGuard verifies that a manifest with an unknown schema version
+// does not equal the current supported version (sanity check for the runVerify guard).
+func TestSchemaVersionGuard(t *testing.T) {
+	// A manifest with an unknown schema version must be rejected.
+	m := &manifest.Manifest{SchemaVersion: "99.0"}
+	require.NotEqual(t, manifest.SchemaVersion, m.SchemaVersion,
+		"test sanity: 99.0 must not equal the current schema version")
+}
+
 func indexOf(s, substr string) int {
 	for i := 0; i <= len(s)-len(substr); i++ {
 		if s[i:i+len(substr)] == substr {

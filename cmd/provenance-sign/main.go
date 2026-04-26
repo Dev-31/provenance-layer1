@@ -168,6 +168,12 @@ func runVerify(args []string) {
 		os.Exit(2)
 	}
 
+	if m.SchemaVersion != manifest.SchemaVersion {
+		fmt.Printf("STATUS: UNVERIFIED — unsupported schema version %q (want %q)\n",
+			m.SchemaVersion, manifest.SchemaVersion)
+		os.Exit(2)
+	}
+
 	kp := *pubkeyPath
 	if kp == "" {
 		kp, err = signing.DefaultPubKeyPath()
