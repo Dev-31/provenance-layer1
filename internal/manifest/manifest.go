@@ -11,9 +11,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/dev-sopariwala/provenance-layer1/internal/git"
-	canjson "github.com/dev-sopariwala/provenance-layer1/internal/json"
-	"github.com/dev-sopariwala/provenance-layer1/internal/signing"
+	"github.com/Dev-31/provenance-layer1/internal/git"
+	canjson "github.com/Dev-31/provenance-layer1/internal/json"
+	"github.com/Dev-31/provenance-layer1/internal/signing"
 )
 
 const SchemaVersion = "1.0"

@@ -1,4 +1,4 @@
-module github.com/dev-sopariwala/provenance-layer1
+module github.com/Dev-31/provenance-layer1
 
 go 1.21
 

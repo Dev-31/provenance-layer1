@@ -14,9 +14,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/dev-sopariwala/provenance-layer1/internal/git"
-	"github.com/dev-sopariwala/provenance-layer1/internal/manifest"
-	"github.com/dev-sopariwala/provenance-layer1/internal/signing"
+	"github.com/Dev-31/provenance-layer1/internal/git"
+	"github.com/Dev-31/provenance-layer1/internal/manifest"
+	"github.com/Dev-31/provenance-layer1/internal/signing"
 )
 
 const Version = "1.1.0"

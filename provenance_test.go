@@ -6,9 +6,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	canjson "github.com/dev-sopariwala/provenance-layer1/internal/json"
-	"github.com/dev-sopariwala/provenance-layer1/internal/manifest"
-	"github.com/dev-sopariwala/provenance-layer1/internal/signing"
+	canjson "github.com/Dev-31/provenance-layer1/internal/json"
+	"github.com/Dev-31/provenance-layer1/internal/manifest"
+	"github.com/Dev-31/provenance-layer1/internal/signing"
 	"github.com/stretchr/testify/require"
 )
 
