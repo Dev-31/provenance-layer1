@@ -247,12 +247,11 @@ func runPubkey(args []string) {
 func runCommand(cmd string) (exitCode int, stdoutHash string, durationMs int64, err error) {
 	start := time.Now()
 
-	parts := strings.Fields(cmd)
-	if len(parts) == 0 {
+	if strings.TrimSpace(cmd) == "" {
 		return 0, "", 0, fmt.Errorf("empty command")
 	}
 
-	c := exec.Command(parts[0], parts[1:]...)
+	c := exec.Command("sh", "-c", cmd)
 	var stdoutBuf bytes.Buffer
 	c.Stdout = io.MultiWriter(os.Stderr, &stdoutBuf)
 	c.Stderr = os.Stderr
